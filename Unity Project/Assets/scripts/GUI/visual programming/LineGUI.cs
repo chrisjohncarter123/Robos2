@@ -21,6 +21,10 @@ public class LineGUI : MonoBehaviour
     Vector2 lineStart, lineEnd;
 
 
+    bool isDrawing = false;
+
+    public bool GetIsDrawing(){return isDrawing;}
+
     void Start()
     {
         
@@ -41,6 +45,21 @@ public class LineGUI : MonoBehaviour
         lineCenter = CreateLineSegment( "Center Line");
         lineRight = CreateLineSegment( "Right Line");
 
+        isDrawing = true;
+
+    }
+
+    public void CreateLine(float lineWidth, Color lineColor){
+        Vector2 lineStart = new Vector2(
+            GetComponent<RectTransform>().rect.x,
+            GetComponent<RectTransform>().rect.y
+        );
+        CreateLine(lineStart, lineWidth, lineColor);
+
+    }
+
+    public void CreateLine(){
+        CreateLine(lineWidth, lineColor);
     }
 
     GameObject CreateLineSegment( string name){
@@ -59,7 +78,16 @@ public class LineGUI : MonoBehaviour
 
     }
 
-
+    public void TryUpdateLine(bool test, RectTransform lineEnd){
+        if(test){
+            UpdateLine(lineEnd);
+        }else {
+            TryDestroyLine();
+        }
+    }
+    public void UpdateLine(RectTransform lineEnd){
+        UpdateLine(new Vector2(lineEnd.rect.x, lineEnd.rect.y ));
+    }
     public void UpdateLine(Vector2 lineEnd){
         this.lineEnd = lineEnd;
 
@@ -108,6 +136,9 @@ public class LineGUI : MonoBehaviour
 
     void UpdateLineSegment(Rect rect, GameObject line){
 
+       // Debug.Log(line);
+     
+
         RectTransform rt = line.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2( rect.x, rect.y);
         rt.sizeDelta = new Vector2( rect.width, rect.height);
@@ -125,5 +156,12 @@ public class LineGUI : MonoBehaviour
 
     void DestroyLineSegment(GameObject line){
         Destroy(line);
+        isDrawing = false;
+    }
+
+    void TryDestroyLine(){
+        if(GetIsDrawing()){
+            DestroyLine();
+        }
     }
 }

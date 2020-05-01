@@ -7,23 +7,29 @@ public class NodeInputGUI : MonoBehaviour
 {
     NodeInput nodeInput;
     public NodePut nodePut;
+    RectTransform rectTransform;
 
     NodeOutputGUI nodeOutputGUI;
     LineGUI lineGUI;
 
     public void SetNodeInput(NodeInput nodeInput){
         this.nodeInput = nodeInput;
-        lineGUI = gameObject.AddComponent<LineGUI>();
+        lineGUI = GetComponent<LineGUI>();
+        lineGUI.SetLineColor(Color.green);
+        lineGUI.SetLineWidth(4f);
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    void Update() {
-        if(nodeInput.HasAnOutput()){
-            Vector2 outputPos = new Vector2(
-                 nodeOutputGUI.GetComponent<RectTransform>().anchoredPosition.x,
-                 nodeOutputGUI.GetComponent<RectTransform>().anchoredPosition.y);
+    public void SetNodeOutput(NodeOutputGUI nodeOutputGUI){
+        nodeInput.SetOutput(nodeOutputGUI.GetNodeOutput());
+        this.nodeOutputGUI = nodeOutputGUI;
+        lineGUI.CreateLine();
+        
+    }
 
-            lineGUI.UpdateLine(outputPos);
-        }
+
+    void Update() {
+        lineGUI.TryUpdateLine(nodeInput.HasAnOutput(), nodeOutputGUI.GetComponent<RectTransform>());
     }
     public NodeInput GetNodeInput(){
         return nodeInput;

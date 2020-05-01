@@ -30,7 +30,7 @@ public class Node : MonoBehaviour
 
         nodeGameObject.SendMessage("RunNode", this);
 
-        return nextFlow.nextNode;
+        return nextFlow.GetNextNode();
 
     }
 
