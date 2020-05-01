@@ -15,12 +15,21 @@ public class CubeMaze : MonoBehaviour
 
     public int depth = 5;
 
+    public int entrances = 5;
+
     public float distance = 2;
     public float cubeSize = 5;
+    public float lightRangeScale = 1.75f;
 
     public float xWeight, yWeight, zWeight;
 
     public bool generateBorders = true;
+
+    public Color leftColor, rightColor,
+     topColor, bottomColor,
+      frontColor, backColor;
+
+      public Color[] colors;
 
 
     Cell[][][] cells;
@@ -59,7 +68,38 @@ public class CubeMaze : MonoBehaviour
                     cubes[x][y][z] = Instantiate(cube);
                     cubes[x][y][z].transform.position = new Vector3(x*distance,y*distance,z*distance);
                     cubes[x][y][z].name = x.ToString() + y.ToString() + z.ToString();
-                    
+
+                    Vector3 colorScaleMin = new Vector3( 
+                        (float)x / (float)width,
+                        (float)y / (float)height,
+                        (float)z / (float)depth
+                        );
+
+                        Debug.Log(x.ToString() + " " + y.ToString() + " " + z.ToString());
+
+                    Vector3 colorScaleMax = new Vector3(1f,1f,1f) - colorScaleMin;
+
+                    Debug.Log(colorScaleMin.ToString() + " " + colorScaleMax.ToString());
+
+                    Color left = colorScaleMin.x * leftColor;
+                    Color right = colorScaleMax.x * rightColor;
+
+                    Color top = colorScaleMin.y * topColor;
+                    Color bottom = colorScaleMax.y * bottomColor;
+
+                    Color front = colorScaleMin.z * frontColor;
+                    Color back = colorScaleMax.z * backColor;
+
+                    Color finalColor = left+right+top+bottom+front+back;
+
+                    finalColor = left + right + top + bottom + front + back;
+
+                    Debug.Log(finalColor);
+                    float finalRange = lightRangeScale * distance;
+
+                    cubes[x][y][z].GetComponentsInChildren<LightRandomizer>()[0].SetColor(finalColor);
+                    cubes[x][y][z].GetComponentsInChildren<LightRandomizer>()[0].SetRange(finalRange);
+
                 }
                 
             }
@@ -106,7 +146,19 @@ public class CubeMaze : MonoBehaviour
         if(generateBorders){
             GenerateBorders();
         }
-        GenerateGameObjects();
+
+
+        for(int i = 0; i < entrances; i++){
+            int x = Random.Range(0, width);
+            int y = Random.Range(0, height);
+            int z = Random.Range(0, depth);
+
+            if(cubes[x][y][z]){
+                Destroy(cubes[x][y][z]);
+            }
+            
+
+        }
        
     }
 
@@ -138,18 +190,14 @@ public class CubeMaze : MonoBehaviour
     void Generate(int x, int y, int z){
 
         /*
-
         source: https://en.wikipedia.org/wiki/Maze_generation_algorithm
-
         The depth-first search algorithm of maze generation is frequently implemented using backtracking. This can be described with a following recursive routine:
-
         Given a current cell as a parameter,
         Mark the current cell as visited
         While the current cell has any unvisited neighbour cells
             Choose one of the unvisited neighbours
             Remove the wall between the current cell and the chosen cell
             Invoke the routine recursively for a chosen cell
-
         */
 
         cells[x][y][z] = Cell.Visited;
@@ -173,7 +221,7 @@ public class CubeMaze : MonoBehaviour
             int newY = y;
             int newZ = z;
 
-            GameObject clone = Instantiate(mazeWall);
+            //GameObject clone = Instantiate(mazeWall);
 
             Vector3 hallAdd = new Vector3(0,0,0);
             
@@ -299,13 +347,6 @@ public class CubeMaze : MonoBehaviour
         }
 
         return result.ToArray();
-
-
-    }
-
-
-    void GenerateGameObjects(){
-
 
 
     }

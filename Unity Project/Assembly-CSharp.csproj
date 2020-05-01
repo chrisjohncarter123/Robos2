@@ -110,9 +110,12 @@
      <Compile Include="Assets\scripts\WiringCamera.cs" />
      <Compile Include="Assets\scripts\level generation\Cube.cs" />
      <Compile Include="Assets\scripts\level generation\CubeMaze.cs" />
+     <Compile Include="Assets\scripts\level generation\CubeRandomizer.cs" />
      <Compile Include="Assets\scripts\level generation\GravitySource.cs" />
+     <Compile Include="Assets\scripts\level generation\LightRandomizer.cs" />
      <Compile Include="Assets\scripts\level generation\MazeCube.cs" />
      <Compile Include="Assets\scripts\level generation\RectMaze.cs" />
+     <Compile Include="Assets\scripts\level generation\TransformRandomizer.cs" />
      <Compile Include="Assets\scripts\robots\Argument.cs" />
      <Compile Include="Assets\scripts\robots\CommandType.cs" />
      <Compile Include="Assets\scripts\robots\Commands\ActionAddToVariable.cs" />
