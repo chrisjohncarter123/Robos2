@@ -8,7 +8,7 @@ public class NodePut : MonoBehaviour
     public double value;
 
 
-    Node node;
+    public Node node;
     public string GetNodePutTitle(){
         return title;
     }

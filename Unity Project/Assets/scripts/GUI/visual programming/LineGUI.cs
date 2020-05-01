@@ -85,6 +85,14 @@ public class LineGUI : MonoBehaviour
             TryDestroyLine();
         }
     }
+
+    public void TryUpdateLine(bool test, Vector2 lineEnd){
+        if(test){
+            UpdateLine(lineEnd);
+        }else {
+            TryDestroyLine();
+        }
+    }
     public void UpdateLine(RectTransform lineEnd){
         UpdateLine(new Vector2(lineEnd.rect.x, lineEnd.rect.y ));
     }
@@ -159,7 +167,7 @@ public class LineGUI : MonoBehaviour
         isDrawing = false;
     }
 
-    void TryDestroyLine(){
+    public void TryDestroyLine(){
         if(GetIsDrawing()){
             DestroyLine();
         }

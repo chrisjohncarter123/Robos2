@@ -62,7 +62,7 @@ public class NodeGUI : MonoBehaviour
         titleText.text = node.GetNodeTitle();
 
 
-            GameObject inputFlowClone = CreatePut(inputFlowBase, inputFlowsParentRectTransform, node.inputFlow.GetNodePut());
+            GameObject inputFlowClone = CreatePut(inputFlowBase, inputFlowsParentRectTransform, inputFlow.GetComponent<NodePut>());
             inputFlowClone.GetComponent<NodeInputFlowGUI>().SetNodeFlow(node.inputFlow);
             inputFlowClone.GetComponent<NodePutGUI>().SetLineWidth(flowLineWidth);
             inputFlowClone.GetComponent<NodePutGUI>().SetLineColor(flowLineColor); 
@@ -95,9 +95,11 @@ public class NodeGUI : MonoBehaviour
 
 
     GameObject CreatePut(GameObject baseObject, RectTransform parentObject, NodePut nodePut){
+
+        Debug.Log(nodePut);
         GameObject clone = Instantiate(baseObject);
         clone.transform.SetParent(parentObject);
-        clone.GetComponent<NodePutGUI>().nodePut = nodePut;
+        clone.GetComponent<NodePutGUI>().SetNodePut(nodePut);
         clone.GetComponent<NodePutGUI>().node = node;
         //clone.GetComponent<SlotGUI>().nodeGUI = this;
 

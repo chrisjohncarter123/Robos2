@@ -18,6 +18,8 @@ public class Node : MonoBehaviour
             n.SetNode(this);
 
         }
+
+        
     }
 
    

@@ -8,17 +8,18 @@ public class NodePutGUI : MonoBehaviour
 
     public Text titleText;
     public Text valueText;
-    public NodePut nodePut;
     public NodePutDragger dragger;
     public SlotGUI slotGUI;
     float lineWidth;
     Color lineColor;
+    NodePut nodePut;
 
 
     public Node node;
  
 
     void Start() {
+
         dragger = gameObject.AddComponent<NodePutDragger>();
         slotGUI = GetComponent<SlotGUI>();
     }
@@ -53,6 +54,13 @@ public class NodePutGUI : MonoBehaviour
     public Color GetLineColor(){
         return lineColor;
 
+    }
+
+    public void SetNodePut(NodePut nodePut){
+        this.nodePut = nodePut;
+    }
+    public NodePut GetNodePut(){
+        return nodePut;
     }
 
     void Update(){

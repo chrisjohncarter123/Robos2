@@ -1313,8 +1313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47a718f773c34028b09da5662fc4b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextNode: {fileID: 0}
-  nodePut: {fileID: 0}
 --- !u!1001 &288199821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1443,6 +1441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: result
   value: 0
+  node: {fileID: 823800154}
 --- !u!1 &301534513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Output Flow
   value: 0
+  node: {fileID: 823800154}
 --- !u!1 &621540168
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Value a
   value: 0
+  node: {fileID: 823800154}
 --- !u!1 &1049949046
 GameObject:
   m_ObjectHideFlags: 0
@@ -7597,6 +7598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Input Flow
   value: 0
+  node: {fileID: 823800154}
 --- !u!114 &1782285855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7609,8 +7611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47a718f773c34028b09da5662fc4b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextNode: {fileID: 0}
-  nodePut: {fileID: 0}
 --- !u!1 &1784772621
 GameObject:
   m_ObjectHideFlags: 0
@@ -9217,6 +9217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Value b
   value: 0
+  node: {fileID: 823800154}
 --- !u!1001 &2090372057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9650,8 +9651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47a718f773c34028b09da5662fc4b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextNode: {fileID: 0}
-  nodePut: {fileID: 0}
 --- !u!1 &9198675695564870758
 GameObject:
   m_ObjectHideFlags: 0
@@ -9698,6 +9697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Input Flow
   value: 0
+  node: {fileID: 0}
 --- !u!1 &9198675695681675876
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,3 +9758,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Value
   value: 0
+  node: {fileID: 0}

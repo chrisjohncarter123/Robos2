@@ -18,7 +18,6 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
     static NodePutDragger hoveringNodePutDragger;
 
 
-    
 
     void Start() {
         lineGUI = GetComponent<LineGUI>();
@@ -28,16 +27,31 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
         
     }
 
-    public void Update() {
-        if (dragging) {
-           if(lineGUI.GetIsDrawing() == false){
-               CreateLine();
+    public void SetLineColor(Color color){
+        lineGUI.SetLineColor(color);
 
-           }
-            lineGUI.UpdateLine(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        }
     }
 
+    public void SetLineWidth(float width){
+        lineGUI.SetLineWidth(width);
+
+    }
+
+    public void Update() {
+        if (dragging) {
+           
+            if(currentNodePutDragger)
+                if(lineGUI.GetIsDrawing() == false){
+                    CreateLine();
+
+                }
+                lineGUI.UpdateLine(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            }
+            else {
+                lineGUI.TryDestroyLine();
+            }
+        }
+        
     void CreateLine(){
          Vector2 start = rectTransform.anchoredPosition;
         lineGUI.CreateLine(start, 3, Color.red);
@@ -51,9 +65,7 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
 
         CreateLine();
 
-         if(currentNodePutDragger == null){
-             currentNodePutDragger = this;
-         }
+         currentNodePutDragger = this;
     }
 
     public override void OnPointerUp(PointerEventData eventData) {
@@ -63,37 +75,50 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
         dragging = false;
         Debug.Log(currentNodePutDragger + "     " + hoveringNodePutDragger);
 
+        //output to input works, input to output doesn't
 
         if(currentNodePutDragger && hoveringNodePutDragger){
-            Debug.Log("here");
+
             if(currentNodePutDragger != hoveringNodePutDragger){
-                Debug.Log("here");
-                if(currentNodePutDragger.GetComponent<NodeInputGUI>() && hoveringNodePutDragger.GetComponent<NodeOutputGUI>()){
-                    Debug.Log("here");
+    
+                if(currentNodePutDragger.GetComponent<NodeInputGUI>()
+                 && hoveringNodePutDragger.GetComponent<NodeOutputGUI>()){
+
 
                     currentNodePutDragger.GetComponent<NodeInputGUI>().SetNodeOutput(
                         hoveringNodePutDragger.GetComponent<NodeOutputGUI>());
 
 
                 }
-                else if(currentNodePutDragger.GetComponent<NodeOutputGUI>() && hoveringNodePutDragger.GetComponent<NodeInputGUI>()){
+                else if(currentNodePutDragger.GetComponent<NodeOutputGUI>()
+                     && hoveringNodePutDragger.GetComponent<NodeInputGUI>()){
+
                     
                     hoveringNodePutDragger.GetComponent<NodeInputGUI>().SetNodeOutput(
                         currentNodePutDragger.GetComponent<NodeOutputGUI>());
                     
                     
                 }
-                else if(currentNodePutDragger.GetComponent<NodeOutputFlowGUI>() && hoveringNodePutDragger.GetComponent<NodeInputFlowGUI>()){
+                else if(currentNodePutDragger.GetComponent<NodeOutputFlowGUI>()
+                && hoveringNodePutDragger.GetComponent<NodeInputFlowGUI>()){
+
+                     Debug.Log("here3");
+
+                    currentNodePutDragger.GetComponent<NodeOutputFlowGUI>().SetNodeInputFlow(
+                        hoveringNodePutDragger.GetComponent<NodeInputFlowGUI>()
+                    );
                     
-                    hoveringNodePutDragger.GetComponent<NodeOutputFlowGUI>().SetNodeInputFlow(
-                        currentNodePutDragger.GetComponent<NodeInputFlowGUI>());
                     
                     
                 }
-                else if(hoveringNodePutDragger.GetComponent<NodeOutputFlowGUI>() && currentNodePutDragger.GetComponent<NodeInputFlowGUI>()){
+                else if(hoveringNodePutDragger.GetComponent<NodeInputFlowGUI>()
+                && currentNodePutDragger.GetComponent<NodeOutputFlowGUI>()){
+
+                     Debug.Log("here4");
                     
-                    currentNodePutDragger.GetComponent<NodeOutputFlowGUI>().SetNodeInputFlow(
-                        hoveringNodePutDragger.GetComponent<NodeInputFlowGUI>());
+                    hoveringNodePutDragger.GetComponent<NodeOutputFlowGUI>().SetNodeInputFlow(
+                        currentNodePutDragger.GetComponent<NodeInputFlowGUI>()
+                    );
                     
                     
                 }
@@ -103,62 +128,24 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
         currentNodePutDragger = null;
         hoveringNodePutDragger = null;
 
-        /*
-
-        if(currentNodePut != null){
-            Debug.Log("Here");
-            if(currentNodePut != GetComponent<NodePut>()){
-                Debug.Log("Here");
-                if(currentNodePut.GetComponent<NodeInputGUI>()){
-                    Debug.Log("Here");
-                    if(GetComponent<NodeOutputGUI>()){
-                        Debug.Log("Here");
-                        if(GetComponent<NodePutGUI>().GetNode() != currentNodePut.GetComponent<NodePutGUI>().GetNode()){
-                            currentNodePut.GetComponent<NodeInputGUI>().GetNodeInput().SetOutput(GetComponent<NodeOutputGUI>().GetNodeOutput());
-                            currentNodePut = null;
-                            Debug.Log("Connected ");
-                        }
-                    }    
-                }
-            }
-        }
-        */
-
-
-
-        /*
-        if(currentNodePut != null){
-            if(currentNodePut != GetComponent<NodePut>()){
-                if(currentNodePut.GetComponent<NodeOutputGUI>()){
-                    if(GetComponent<NodeOutputGUI>()){
-                        if(GetComponent<NodePutGUI>().GetNode() != currentNodePut.GetComponent<NodePutGUI>().GetNode()){
-                            GetComponent<NodeInputGUI>().GetNodeInput().SetOutput(currentNodePut.GetComponent<NodeOutputGUI>().GetNodeOutput());
-                            currentNodePut = null;
-                            Debug.Log("Connected ");
-                        }
-                    }    
-                }
-            }
-        }
-        */
     }
     public override void OnPointerEnter(PointerEventData eventData) {
-        if(hoveringNodePutDragger == null){
-            hoveringNodePutDragger = this;
+        
 
+        hoveringNodePutDragger = null;
+        if(currentNodePutDragger){
+            if(this != currentNodePutDragger){
+                hoveringNodePutDragger = this;
+
+            }
         }
 
         
     }
 
     public override void OnPointerExit(PointerEventData eventData) {
+        hoveringNodePutDragger = null;
 
-        if(hoveringNodePutDragger == this){
-            hoveringNodePutDragger = null;
-
-        }
-
-        
     }
 
 }

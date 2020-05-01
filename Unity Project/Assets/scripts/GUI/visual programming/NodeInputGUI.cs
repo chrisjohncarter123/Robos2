@@ -29,7 +29,15 @@ public class NodeInputGUI : MonoBehaviour
 
 
     void Update() {
-        lineGUI.TryUpdateLine(nodeInput.HasAnOutput(), nodeOutputGUI.GetComponent<RectTransform>());
+        if(nodeOutputGUI){
+            Debug.Log(nodeOutputGUI.GetComponent<RectTransform>().rect.x.ToString() + " " + nodeOutputGUI.GetComponent<RectTransform>().rect.y.ToString());
+            lineGUI.TryUpdateLine(
+                nodeInput.HasAnOutput(),
+                nodeOutputGUI.transform.position);
+        }
+        else {
+            lineGUI.TryDestroyLine();
+        }
     }
     public NodeInput GetNodeInput(){
         return nodeInput;

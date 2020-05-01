@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NodeFlow : MonoBehaviour
 {
-    Node node;
     Node nextNode;
     NodePut nodePut;
 
@@ -20,11 +19,9 @@ public class NodeFlow : MonoBehaviour
     }
 
     public Node GetNode(){
-        return node;
-    }
-
-    public void SetNode(Node node){
-        this.node = node;
+        Debug.Log(nodePut);
+        Debug.Log(nodePut.GetNode());
+        return nodePut.GetNode();
     }
 
     public NodePut GetNodePut(){
@@ -35,7 +32,7 @@ public class NodeFlow : MonoBehaviour
         this.nodePut = nodePut;
     }
 
-    public bool HasAnOutput(){
+    public bool HasANextNode(){
         return nextNode != null;
     }
 

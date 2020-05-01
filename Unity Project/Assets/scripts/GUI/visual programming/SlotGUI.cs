@@ -22,9 +22,11 @@ public class SlotGUI : EventTrigger
     }
 
     public void Update() {
-        if (dragging) {
+        if(line){
+            if (line.GetIsDrawing()) {
 
-            line.UpdateLine(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+                line.UpdateLine(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            }
         }
     }
 
@@ -39,7 +41,7 @@ public class SlotGUI : EventTrigger
     public override void OnPointerUp(PointerEventData eventData) {
         dragging = false;
 
-        line.DestroyLine();
+        line.TryDestroyLine();
     }
 
     public override void OnPointerEnter(PointerEventData eventData){

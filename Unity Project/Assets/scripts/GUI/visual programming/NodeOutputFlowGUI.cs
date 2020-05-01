@@ -10,8 +10,18 @@ public class NodeOutputFlowGUI : MonoBehaviour
 
     NodeInputFlowGUI nodeInputFlowGUI;
 
+    bool isDrawing = false;
+
+        LineGUI lineGUI;
+
+
+
     public void SetNodeFlow(NodeFlow nodeFlow){
         this.nodeFlow = nodeFlow;
+        lineGUI = GetComponent<LineGUI>();
+        lineGUI.SetLineColor(Color.green);
+        lineGUI.SetLineWidth(4f);
+        
     }
 
     public NodeFlow GetOutputFlow(){
@@ -19,8 +29,33 @@ public class NodeOutputFlowGUI : MonoBehaviour
     }
 
     public void SetNodeInputFlow(NodeInputFlowGUI nodeInputFlowGUI){
+        Debug.Log("HEERE");
         this.nodeInputFlowGUI = nodeInputFlowGUI;
         nodeFlow.SetNextNode(nodeInputFlowGUI.GetNodeFlow().GetNode());
+        lineGUI.CreateLine();
+        
+    }
 
+    void Update() {
+        
+        if(nodeFlow && nodeInputFlowGUI){
+            Debug.Log("HEERE2");
+
+            if(!lineGUI.GetIsDrawing()){
+                lineGUI.CreateLine();
+                Debug.Log("HEERE3");
+
+            }
+            Debug.Log(nodeInputFlowGUI.transform.position);
+
+
+            lineGUI.TryUpdateLine(
+                nodeFlow.HasANextNode(),
+                 nodeInputFlowGUI.transform.position);
+
+        }
+        else {
+            lineGUI.TryDestroyLine();
+        }
     }
 }
