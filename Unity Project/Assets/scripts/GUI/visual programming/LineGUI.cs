@@ -25,7 +25,7 @@ public class LineGUI : MonoBehaviour
 
     public bool GetIsDrawing(){return isDrawing;}
 
-    const float seperationDistance = 45;
+    const float seperationDistance = 20;
 
     Transform lineParent;
 
@@ -124,8 +124,16 @@ public class LineGUI : MonoBehaviour
             TryDestroyLine();
         }
     }
+    public GameObject start;
+    public GameObject end;
 
-    public void UpdateLine(NodePutGUI start, NodePutGUI end, int seperation){
+    public void UpdateLine(GameObject start, GameObject end, int seperation){
+
+
+        transform.localScale = new Vector3(1,1,1);
+
+        this.end = end;
+        this.start = start;
 
 
         GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
@@ -133,6 +141,7 @@ public class LineGUI : MonoBehaviour
         GetComponent<RectTransform>().anchorMax = new Vector2(.5f,.5f);
 
 
+/*
         lineStart =
         new Vector2(
             start.GetComponent<RectTransform>().rect.x,
@@ -142,77 +151,126 @@ public class LineGUI : MonoBehaviour
         new Vector2(
             end.GetComponent<RectTransform>().rect.x,
             end.GetComponent<RectTransform>().rect.y);
+            */
+
+
+            
 
             Vector2 pos = start.transform.position;
             lineEnd = end.transform.position;
 
 
-        
-        float leftSeperationDistance = (seperation * seperationDistance);
-        float rightSeperationDistance = -leftSeperationDistance;
-        float leftWidth = (-lineEnd.x + pos.x) / 2;
-        float leftX = -(leftWidth) * .5f;
-        float centerX = (lineEnd.x - pos.x) / 2;
 
-        if(seperation < 0){
-            leftSeperationDistance *= -1;
-            rightSeperationDistance *= -1;
-            leftWidth *= -1;
-           // leftWidth += leftSeperationDistance * 3;
-            leftWidth *= .5f;
-           // leftX -= leftSeperationDistance * .5f;
 
-            centerX -= leftSeperationDistance;
+
+       
+        Debug.Log("hi");
+        float sDist = seperation * seperationDistance;
+
+        if(start.transform.position.y > end.transform.position.y){
+            sDist *= -2;
+
         }
         else {
-            centerX += leftSeperationDistance;
-            leftWidth -= leftSeperationDistance;
-            leftX += leftSeperationDistance * .5f;
+            sDist *= 2;
+
         }
+
+        if(start.transform.position.x > end.transform.position.x){
+            sDist *= -1;
+
+        }
+        else {
+            sDist *= 1;
+
+        }
+        
+
+
+    
+
+        float leftWidth = ((start.transform.position.x - end.transform.position.x) * .5f ) / VisualProgramScalerGUI.GetCurrentScale();
+        float leftX = (-leftWidth * .5f);
+        if(start.transform.position.x - end.transform.position.x + sDist < 0){
+            leftWidth *= -1;
+            leftWidth += sDist;
+        }
+        else {
+            leftWidth -= sDist;
+
+        }
+
         UpdateLineSegment(
             new Rect (
-            leftX,
+            leftX + sDist * .5f,
             0,
-            leftWidth,
-            lineWidth),
+            Mathf.Abs(leftWidth),
+            Mathf.Abs(lineWidth)),
             lineLeft
         );
 
-        float centerY = 0;
-        float centerH = 0;
 
-        if(lineEnd.y > pos.y){
-            centerY = -(pos.y - lineEnd.y )  / 2;
-            centerH = -pos.y + lineEnd.y;
+     
+      float centerHeight = Mathf.Abs(start.transform.position.y - end.transform.position.y) / VisualProgramScalerGUI.GetCurrentScale();
+      float centerX = (-start.transform.position.x + end.transform.position.x) * .5f / VisualProgramScalerGUI.GetCurrentScale();
+      float centerY = (-start.transform.position.y + end.transform.position.y) * .5f / VisualProgramScalerGUI.GetCurrentScale();
 
-        } else {
-            centerY = -(pos.y - lineEnd.y )  / 2;
-            centerH = pos.y - lineEnd.y;
-
-        }
-
-        centerH += lineWidth;
-      // centerY -= lineWidth * .5f;
+      centerX += sDist;
 
          UpdateLineSegment(
             new Rect(
-            centerX,
+            centerX, 
             centerY,
             lineWidth,
-            centerH),
+            centerHeight + lineWidth),
             lineCenter
         );
 
-        float rightWidthBase = (lineEnd.x - pos.x);
+        
+
+        float rightWidth = ((start.transform.position.x - end.transform.position.x) * .5f ) / VisualProgramScalerGUI.GetCurrentScale();
+         if(start.transform.position.x - end.transform.position.x < 0){
+            rightWidth *= -1;
+          
+        }
+        else {
+            
+
+        }
+        float rightX = centerX + leftX;
+        float rightY = centerY - centerHeight;
+        if(start.transform.position.y - end.transform.position.y < 0){
+            rightY = ((-start.transform.position.y + end.transform.position.y) + (0 * centerHeight)) / VisualProgramScalerGUI.GetCurrentScale();
+        
+        }
+        else {
+            rightY += centerHeight * .5f;
+
+
+        }
+
+        if(start.transform.position.x - end.transform.position.x + sDist < 0){
+            rightWidth -= sDist;
+        }
+        else {
+             rightWidth += sDist;
+
+        }
+
+        rightX -= sDist * .5f;
+       // rightWidth += sDist;
+        
 
         UpdateLineSegment(
             new Rect (
-            (rightWidthBase) * 3 / 4 - rightSeperationDistance * .5f,
-            -pos.y + lineEnd.y,
-            Mathf.Abs(rightWidthBase / 2) - rightSeperationDistance,
+            rightX ,
+            rightY,
+            rightWidth,
             lineWidth),
             lineRight
         );
+        
+        
 
 
 
@@ -234,6 +292,9 @@ public class LineGUI : MonoBehaviour
     }
 
     public void UpdateLineToMouse(){
+
+        transform.localScale = new Vector3(1,1,1);
+
         Vector2 start = new Vector2(
             -UnityEngine.Screen.width / 2 + lineStart.x,
             -UnityEngine.Screen.height / 2 + lineStart.y
@@ -293,7 +354,7 @@ public class LineGUI : MonoBehaviour
             (lineEnd.x - pos.x) / 2,
             centerY,
             lineWidth,
-            centerH),
+            centerH + lineWidth * .25f),
             lineCenter
         );
 
@@ -315,7 +376,8 @@ public class LineGUI : MonoBehaviour
         RectTransform rt = line.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2( rect.x, rect.y);
         rt.sizeDelta = new Vector2( rect.width, rect.height);
-        line.transform.SetParent(lineParent);
+        line.transform.SetParent(lineParent, false);
+        line.transform.localScale = new Vector3(1,1,1);
 
         line.GetComponent<Image>().color = lineColor;
 

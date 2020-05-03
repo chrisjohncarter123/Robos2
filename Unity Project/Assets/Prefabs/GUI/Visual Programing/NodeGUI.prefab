@@ -395,10 +395,10 @@ MonoBehaviour:
   outputBase: {fileID: 1378879624922286282, guid: d06f771b26ff74de39492ba586dec8ad,
     type: 3}
   outputConstantBase: {fileID: 0}
-  flowLineWidth: 10
-  variableLineWidth: 10
-  flowLineColor: {r: 0.9716981, g: 0.72479683, b: 0.26125845, a: 1}
-  variableLineColor: {r: 0.26900142, g: 0.4285116, b: 0.6132076, a: 1}
+  flowLineWidth: 20
+  variableLineWidth: 20
+  flowLineColor: {r: 1, g: 0.65193367, b: 0, a: 1}
+  variableLineColor: {r: 0.08388218, g: 0.32724997, b: 0.6132076, a: 1}
   lineBase: {fileID: 773074243243750184, guid: 5a66ff887a56a4180865f184360335cf, type: 3}
   node: {fileID: 0}
 --- !u!114 &3393260892737480093

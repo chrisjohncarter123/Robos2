@@ -30,6 +30,9 @@ public class NodeInputGUI : MonoBehaviour
     }
 
     public void SetNodeOutput(NodeOutputGUI nodeOutputGUI){
+        if (putLineGUI.GetIsDrawing()){
+            putLineGUI.EndLine();
+        }
         nodeInput.SetOutput(nodeOutputGUI.GetNodeOutput());
         this.nodeOutputGUI = nodeOutputGUI;
         putLineGUI.StartLine(

@@ -57,7 +57,7 @@ public class PutLineGUI : MonoBehaviour
         GameObject line = new GameObject();
         line.name = "Line";
         line.AddComponent<RectTransform>();
-        line.transform.SetParent(transform);
+        line.transform.SetParent(transform, false);
         lineGUI = line.AddComponent<LineGUI>();
         
         lineGUI.SetLineWidth(5);
@@ -77,8 +77,8 @@ public class PutLineGUI : MonoBehaviour
             }
            //update line
            lineGUI.UpdateLine(
-               nodePut,
-               endPut,
+               nodePut.gameObject,
+               endPut.gameObject,
                seperation);
         }
         else{

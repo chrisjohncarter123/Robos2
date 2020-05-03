@@ -52,11 +52,16 @@ public class VisualProgramPositionGUI : EventTrigger
 
         
         if (dragging) {
+
+                scale = VisualProgramScalerGUI.GetCurrentScale();
+
             Vector2 mouseDifference =
              new Vector2(
                 Input.mousePosition.x, Input.mousePosition.y) 
                 - mouseStart;
-            programPosition = posStart + (mouseDifference * scale) ;
+            programPosition = posStart + (mouseDifference / scale * .5f) ;
+            programPosition.x = Mathf.Clamp(programPosition.x, -800, 800);
+            programPosition.y = Mathf.Clamp(programPosition.y, -800, 800);
         }
     }
 

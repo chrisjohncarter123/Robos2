@@ -31,6 +31,9 @@ public class NodeOutputFlowGUI : MonoBehaviour
     }
 
     public void SetNodeInputFlow(NodeInputFlowGUI nodeInputFlowGUI){
+        if (putLineGUI.GetIsDrawing()){
+            putLineGUI.EndLine();
+        }
         this.nodeInputFlowGUI = nodeInputFlowGUI;
         nodeFlow.SetNextNode(nodeInputFlowGUI.GetNodeFlow().GetNode());
         putLineGUI.SetPut(nodePutGUI) ;
