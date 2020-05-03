@@ -10,10 +10,15 @@ public class VisualProgramGUI : MonoBehaviour
     public NewNodeGUI newNodeGUI;
     public MouseLineGUI mouseLine;
     public VisualProgramPositionGUI positionGUI;
+    public VisualProgramScalerGUI scalerGUI;
 
     void Start() {
         positionGUI.SetProgramGUI(this);
         
+    }
+
+    public VisualProgramScalerGUI GetVisualProgramScalerGUI(){
+        return scalerGUI;
     }
 
 

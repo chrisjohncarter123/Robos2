@@ -20,11 +20,17 @@ public class NodeDraggerGUI : EventTrigger {
 
     public void Update() {
         if (dragging) {
+
+
             Vector2 mouseDifference 
                 = new Vector2(
                     Input.mousePosition.x,
                     Input.mousePosition.y) 
                 - mouseStart;
+
+                float scale = VisualProgramScalerGUI.GetCurrentScale();
+
+                mouseDifference /= scale;
             nodeGUI.SetNodePosition(posStart + mouseDifference);
         }
     }

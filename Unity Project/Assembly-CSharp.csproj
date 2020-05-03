@@ -106,6 +106,7 @@
      <Compile Include="Assets\scripts\GUI\VariableGUI.cs" />
      <Compile Include="Assets\scripts\GUI\VariablesParentGUI.cs" />
      <Compile Include="Assets\scripts\GUI\WiringPartGUI.cs" />
+     <Compile Include="Assets\scripts\GUI\visual programming\CreateNewNodeDropdownGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\DragAndDrop.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\LineGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\MouseLineGUI.cs" />
@@ -216,6 +217,7 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-Glossy.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-DiffuseBumpSpec.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\MKGlowStandard.shader" />
+     <None Include="Assets\Materials\Fade.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\MKGlowStandardSpecular.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-DefaultETC1.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM40.shader" />

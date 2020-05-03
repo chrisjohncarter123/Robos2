@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//https://docs.unity3d.com/ScriptReference/Mesh.CombineMeshes.html
-
 // Copy meshes from children into the parent's Mesh.
 // CombineInstance stores the list of meshes.  These are combined
 // and assigned to the attached Mesh.
@@ -11,8 +9,7 @@ using System.Collections;
 [RequireComponent(typeof(MeshRenderer))]
 public class MeshCombiner : MonoBehaviour
 {
-    public void Combine()
-    {
+    public void Combine(){
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
@@ -29,4 +26,10 @@ public class MeshCombiner : MonoBehaviour
         transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
         transform.gameObject.SetActive(true);
     }
+
+    
+    void Start(){
+        Combine();
+    }
+        
 }

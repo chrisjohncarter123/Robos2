@@ -17,6 +17,7 @@ public class VisualProgramPositionGUI : EventTrigger
 
     VisualProgramGUI programGUI;
 
+
     void Start() {
         
     }
@@ -26,11 +27,10 @@ public class VisualProgramPositionGUI : EventTrigger
 
     }
     public Vector2 GetProgramPosition(){
-        return programPosition;
+        return programPosition ;
 
     }
-
-    float GetNodeMinX(){
+/*    float GetNodeMinX(){
 
         int minIndex;
         float min = Mathf.Infinity;
@@ -46,6 +46,7 @@ public class VisualProgramPositionGUI : EventTrigger
         }
 
     }
+    */
 
     public void Update() {
 

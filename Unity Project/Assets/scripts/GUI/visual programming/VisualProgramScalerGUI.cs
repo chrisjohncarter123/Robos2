@@ -7,6 +7,7 @@ public class VisualProgramScalerGUI : MonoBehaviour
 
     public float scaleSpeed = 1;
     public float minScale = .75f, maxScale = 1.25f;
+    static float currentScale = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,14 @@ public class VisualProgramScalerGUI : MonoBehaviour
         scale.x = Mathf.Clamp(scale.x, minScale, maxScale);
         scale.y = Mathf.Clamp(scale.y, minScale, maxScale);
         gameObject.GetComponent<RectTransform>().localScale = scale;
+        currentScale = gameObject.GetComponent<RectTransform>().localScale.x;
         
 
         
+    }
+
+    public static float GetCurrentScale(){
+        return currentScale;
+
     }
 }

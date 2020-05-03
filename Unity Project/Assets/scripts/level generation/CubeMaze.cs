@@ -163,8 +163,11 @@ public class CubeMaze : MonoBehaviour
             
 
         }
+        if(GetComponent<MeshCombiner>()){
+             GetComponent<MeshCombiner>().Combine();
 
-        GetComponent<MeshCombiner>().Combine();
+        }
+       
        
     }
 
@@ -230,6 +233,8 @@ public class CubeMaze : MonoBehaviour
             //GameObject clone = Instantiate(mazeWall);
 
             Vector3 hallAdd = new Vector3(0,0,0);
+
+            
             
 
             switch (choice){
@@ -295,8 +300,6 @@ public class CubeMaze : MonoBehaviour
 
                 break;
             }
-            
-            Debug.Log(newX.ToString() + newY.ToString() + newZ.ToString());
             
 
             GameObject hallCopy = Instantiate(hall);
