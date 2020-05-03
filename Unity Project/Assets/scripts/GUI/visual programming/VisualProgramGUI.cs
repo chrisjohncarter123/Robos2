@@ -14,6 +14,7 @@ public class VisualProgramGUI : MonoBehaviour
 
     void Start() {
         positionGUI.SetProgramGUI(this);
+        CreateNode();
         
     }
 
@@ -21,9 +22,7 @@ public class VisualProgramGUI : MonoBehaviour
         return scalerGUI;
     }
 
-
-    public void CreateNode(){
-        
+    public void CreateNode(GameObject newNodeGameObject){
         Node newNodeObject = visualProgram.CreateNode(newNodeGUI.GetDropdownValue());
 
         GameObject newNodeGameObject = Instantiate(newNodeBase);
@@ -33,6 +32,12 @@ public class VisualProgramGUI : MonoBehaviour
         newNodeGameObject.GetComponent<NodeGUI>().SetMouseLine(mouseLine);
         newNodeGameObject.GetComponent<NodeGUI>().InitGUI(newNodeObject);
         newNodeGameObject.GetComponent<NodeGUI>().SetPositionGUI(positionGUI);
+    }
+
+    public void CreateNode(){
+    //    CreateNode
+        
+        
 
     }
 
