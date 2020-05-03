@@ -8,20 +8,29 @@ public class NodePutGUI : MonoBehaviour
 
     public Text titleText;
     public Text valueText;
-    public NodePutDragger dragger;
     public SlotGUI slotGUI;
-    float lineWidth;
-    Color lineColor;
-    NodePut nodePut;
+    public NodePut nodePut;
+
+    float selectorSize = 50;
+
+    public RectTransform selectorRectTransform;
 
 
     public Node node;
  
 
     void Start() {
-
-        dragger = gameObject.AddComponent<NodePutDragger>();
         slotGUI = GetComponent<SlotGUI>();
+
+        selectorRectTransform.sizeDelta = new Vector2(selectorSize, selectorSize);
+     
+    }
+
+
+    public void SetSize(float size){
+        selectorSize = size;
+        selectorRectTransform.sizeDelta = new Vector2(selectorSize, selectorSize);
+
     }
     public void SetTitleText(string value){
         if(titleText){
@@ -35,25 +44,8 @@ public class NodePutGUI : MonoBehaviour
         }
 
     }
-    public void SetLineColor(Color lineColor){
-        this.lineColor = lineColor;
-
-    }
-    public void SetLineWidth(float lineWidth){
-        this.lineWidth = lineWidth;
-
-    }
     public Node GetNode(){
         return nodePut.GetNode();
-    }
-
-    public float GetLineWidth(){
-        return lineWidth;
-
-    }
-    public Color GetLineColor(){
-        return lineColor;
-
     }
 
     public void SetNodePut(NodePut nodePut){
@@ -63,12 +55,24 @@ public class NodePutGUI : MonoBehaviour
         return nodePut;
     }
 
+    
+
     void Update(){
 
-        SetTitleText(nodePut.GetNodePutTitle());
+        if(nodePut){
 
+            if(nodePut.GetNodePutTitle() != null){
+                SetTitleText(nodePut.GetNodePutTitle());
 
-        SetValueText(nodePut.GetNodePutValue().ToString());
+            }
+
+            if(nodePut.GetNodePutValue() != null){
+                SetValueText(nodePut.GetNodePutValue().ToString());
+
+            }
+        }
+
 
     }
+
 }

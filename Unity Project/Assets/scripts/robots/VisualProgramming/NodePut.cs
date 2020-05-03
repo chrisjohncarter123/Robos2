@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class NodePut : MonoBehaviour
 {
-    public string title;
-    public double value;
-
+    public string title = "";
+    public double value = 0;
 
     public Node node;
     public string GetNodePutTitle(){
@@ -28,5 +27,6 @@ public class NodePut : MonoBehaviour
         return node;
 
     }
+    
 
 }

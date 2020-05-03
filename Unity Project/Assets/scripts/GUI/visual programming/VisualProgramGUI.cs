@@ -8,6 +8,13 @@ public class VisualProgramGUI : MonoBehaviour
     public GameObject nodeGUIParent;
     public VisualProgram visualProgram;
     public NewNodeGUI newNodeGUI;
+    public MouseLineGUI mouseLine;
+    public VisualProgramPositionGUI positionGUI;
+
+    void Start() {
+        positionGUI.SetProgramGUI(this);
+        
+    }
 
 
     public void CreateNode(){
@@ -17,8 +24,10 @@ public class VisualProgramGUI : MonoBehaviour
         GameObject newNodeGameObject = Instantiate(newNodeBase);
 
         
-        newNodeGameObject.transform.SetParent(nodeGUIParent.transform);
+        newNodeGameObject.transform.SetParent(nodeGUIParent.transform, false);
+        newNodeGameObject.GetComponent<NodeGUI>().SetMouseLine(mouseLine);
         newNodeGameObject.GetComponent<NodeGUI>().InitGUI(newNodeObject);
+        newNodeGameObject.GetComponent<NodeGUI>().SetPositionGUI(positionGUI);
 
     }
 
@@ -27,4 +36,12 @@ public class VisualProgramGUI : MonoBehaviour
         Destroy(nodeGUI.gameObject);
 
     }
+
+    public NodeGUI[] GetAllNodes(){
+        return GetComponentsInChildren<NodeGUI>();
+
+    }
+
+
+
 }

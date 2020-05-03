@@ -38,6 +38,7 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
     }
 
     public void Update() {
+        /*
         if (dragging) {
            
             if(currentNodePutDragger)
@@ -51,26 +52,23 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
                 lineGUI.TryDestroyLine();
             }
         }
-        
+    */
+    }
     void CreateLine(){
          Vector2 start = rectTransform.anchoredPosition;
-        lineGUI.CreateLine(start, 3, Color.red);
+       // lineGUI.CreateLine(start, 3, Color.red);
     }
 
     public override void OnPointerDown(PointerEventData eventData) {
         dragging = true;
-
-        Debug.Log("Here");
-       
-
-        CreateLine();
+      //  CreateLine();
 
          currentNodePutDragger = this;
     }
 
     public override void OnPointerUp(PointerEventData eventData) {
 
-        lineGUI.DestroyLine();
+       // lineGUI.DestroyLine();
 
         dragging = false;
         Debug.Log(currentNodePutDragger + "     " + hoveringNodePutDragger);
@@ -84,7 +82,7 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
                 if(currentNodePutDragger.GetComponent<NodeInputGUI>()
                  && hoveringNodePutDragger.GetComponent<NodeOutputGUI>()){
 
-
+                    Debug.Log("here");
                     currentNodePutDragger.GetComponent<NodeInputGUI>().SetNodeOutput(
                         hoveringNodePutDragger.GetComponent<NodeOutputGUI>());
 
@@ -93,7 +91,7 @@ public class NodePutDragger : EventTrigger, IPointerDownHandler, IPointerEnterHa
                 else if(currentNodePutDragger.GetComponent<NodeOutputGUI>()
                      && hoveringNodePutDragger.GetComponent<NodeInputGUI>()){
 
-                    
+                     Debug.Log("here2");
                     hoveringNodePutDragger.GetComponent<NodeInputGUI>().SetNodeOutput(
                         currentNodePutDragger.GetComponent<NodeOutputGUI>());
                     

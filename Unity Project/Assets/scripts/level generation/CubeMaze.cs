@@ -66,8 +66,12 @@ public class CubeMaze : MonoBehaviour
 
                 for(int z = 0; z < depth; z++){
                     cubes[x][y][z] = Instantiate(cube);
-                    cubes[x][y][z].transform.position = new Vector3(x*distance,y*distance,z*distance);
+               
+                    
+                    cubes[x][y][z].transform.localPosition = new Vector3(x*distance,y*distance,z*distance);
                     cubes[x][y][z].name = x.ToString() + y.ToString() + z.ToString();
+
+                    cubes[x][y][z].transform.SetParent(transform);
 
                     Vector3 colorScaleMin = new Vector3( 
                         (float)x / (float)width,
@@ -159,6 +163,8 @@ public class CubeMaze : MonoBehaviour
             
 
         }
+
+        GetComponent<MeshCombiner>().Combine();
        
     }
 
@@ -178,7 +184,7 @@ public class CubeMaze : MonoBehaviour
 
     void GenerateBorder(Vector3 pos, Vector3 scale){
         GameObject clone = Instantiate(mazeWall);
-        clone.transform.position = pos;
+        clone.transform.localPosition = pos;
         clone.transform.localScale = scale;
 
     }
@@ -294,8 +300,8 @@ public class CubeMaze : MonoBehaviour
             
 
             GameObject hallCopy = Instantiate(hall);
-            hallCopy.transform.position = 
-            cubes[x][y][z].transform.position 
+            hallCopy.transform.localPosition = 
+            cubes[x][y][z].transform.localPosition 
             + ( hallAdd * distance * .5f);
             hallCopy.transform.localScale = new Vector3(
                 hallCopy.transform.localScale.x,
@@ -304,7 +310,7 @@ public class CubeMaze : MonoBehaviour
 
             );
             
-            hallCopy.transform.LookAt(cubes[x][y][z].transform.position);
+            hallCopy.transform.LookAt(cubes[x][y][z].transform.localPosition);
 
            // walls[newX][newY][newZ] = Wall.Open;
             Generate(newX, newY, newZ);

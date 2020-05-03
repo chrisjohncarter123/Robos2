@@ -6,21 +6,23 @@ using UnityEngine.UI;
 public class NodeOutputFlowGUI : MonoBehaviour
 {
     NodeFlow nodeFlow;
-    public NodePut nodePut;
+    NodePutGUI nodePutGUI;
 
     NodeInputFlowGUI nodeInputFlowGUI;
-
-    bool isDrawing = false;
-
-        LineGUI lineGUI;
+    PutLineGUI putLineGUI;
 
 
+
+    void Start() {
+
+        nodePutGUI = GetComponent<NodePutGUI>();
+
+        putLineGUI = GetComponent<PutLineGUI>();
+        
+    }
 
     public void SetNodeFlow(NodeFlow nodeFlow){
         this.nodeFlow = nodeFlow;
-        lineGUI = GetComponent<LineGUI>();
-        lineGUI.SetLineColor(Color.green);
-        lineGUI.SetLineWidth(4f);
         
     }
 
@@ -29,33 +31,21 @@ public class NodeOutputFlowGUI : MonoBehaviour
     }
 
     public void SetNodeInputFlow(NodeInputFlowGUI nodeInputFlowGUI){
-        Debug.Log("HEERE");
         this.nodeInputFlowGUI = nodeInputFlowGUI;
         nodeFlow.SetNextNode(nodeInputFlowGUI.GetNodeFlow().GetNode());
-        lineGUI.CreateLine();
+        putLineGUI.SetPut(nodePutGUI) ;
+        putLineGUI.StartLine(nodeInputFlowGUI.GetComponent<NodePutGUI>());
+        
+        putLineGUI.SetLineParent(nodeInputFlowGUI.transform);
+        
         
     }
 
-    void Update() {
-        
-        if(nodeFlow && nodeInputFlowGUI){
-            Debug.Log("HEERE2");
-
-            if(!lineGUI.GetIsDrawing()){
-                lineGUI.CreateLine();
-                Debug.Log("HEERE3");
-
-            }
-            Debug.Log(nodeInputFlowGUI.transform.position);
-
-
-            lineGUI.TryUpdateLine(
-                nodeFlow.HasANextNode(),
-                 nodeInputFlowGUI.transform.position);
-
-        }
-        else {
-            lineGUI.TryDestroyLine();
+    void Update(){
+        if(nodeFlow.HasANextNode()){
+            
+        } else if (putLineGUI.GetIsDrawing()){
+            putLineGUI.EndLine();
         }
     }
 }

@@ -8,7 +8,7 @@ public class DragAndDrop : EventTrigger {
     [SerializeField]
     public GameObject draggedObject;
 
-
+    [SerializeField]
     bool dragParent = true;
 
     private bool dragging;

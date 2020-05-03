@@ -5,40 +5,51 @@ using UnityEngine.UI;
 
 public class NodeInputGUI : MonoBehaviour
 {
+    NodePutGUI nodePutGUI;
     NodeInput nodeInput;
-    public NodePut nodePut;
     RectTransform rectTransform;
 
     NodeOutputGUI nodeOutputGUI;
+
     LineGUI lineGUI;
+
+    PutLineGUI putLineGUI;
+
+    void Start() {
+        nodePutGUI = GetComponent<NodePutGUI>();
+
+        putLineGUI = GetComponent<PutLineGUI>();
+        putLineGUI.SetPut(nodePutGUI);
+    }
+
 
     public void SetNodeInput(NodeInput nodeInput){
         this.nodeInput = nodeInput;
-        lineGUI = GetComponent<LineGUI>();
-        lineGUI.SetLineColor(Color.green);
-        lineGUI.SetLineWidth(4f);
-        rectTransform = GetComponent<RectTransform>();
+        nodePutGUI = gameObject.GetComponent<NodePutGUI>();
+        
     }
 
     public void SetNodeOutput(NodeOutputGUI nodeOutputGUI){
         nodeInput.SetOutput(nodeOutputGUI.GetNodeOutput());
         this.nodeOutputGUI = nodeOutputGUI;
-        lineGUI.CreateLine();
+        putLineGUI.StartLine(
+            nodeOutputGUI.GetComponent<NodePutGUI>());
+        putLineGUI.SetLineParent(nodePutGUI.transform);
         
+
     }
 
 
-    void Update() {
-        if(nodeOutputGUI){
-            Debug.Log(nodeOutputGUI.GetComponent<RectTransform>().rect.x.ToString() + " " + nodeOutputGUI.GetComponent<RectTransform>().rect.y.ToString());
-            lineGUI.TryUpdateLine(
-                nodeInput.HasAnOutput(),
-                nodeOutputGUI.transform.position);
-        }
-        else {
-            lineGUI.TryDestroyLine();
+
+    void Update(){
+        if(nodeInput.HasAnOutput()){
+            
+        } else if (putLineGUI.GetIsDrawing()){
+            putLineGUI.EndLine();
+            nodeOutputGUI = null;
         }
     }
+
     public NodeInput GetNodeInput(){
         return nodeInput;
     }

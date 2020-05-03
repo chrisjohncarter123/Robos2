@@ -14,7 +14,7 @@ public class LineGUI : MonoBehaviour
     GameObject lineEndBase;
 
     public float lineWidth = 3;
-    Color lineColor;
+    public Color lineColor;
 
     GameObject lineLeft, lineCenter, lineRight;
 
@@ -24,6 +24,10 @@ public class LineGUI : MonoBehaviour
     bool isDrawing = false;
 
     public bool GetIsDrawing(){return isDrawing;}
+
+    const float seperationDistance = 45;
+
+    Transform lineParent;
 
     void Start()
     {
@@ -37,6 +41,9 @@ public class LineGUI : MonoBehaviour
     }
 
     public void CreateLine(Vector2 lineStart, float lineWidth, Color lineColor){
+
+        TryDestroyLine();
+
         this.lineStart = lineStart;
         SetLineWidth(lineWidth);
         SetLineColor(lineColor);
@@ -44,6 +51,10 @@ public class LineGUI : MonoBehaviour
         lineLeft = CreateLineSegment("Left Line");
         lineCenter = CreateLineSegment( "Center Line");
         lineRight = CreateLineSegment( "Right Line");
+
+        lineParent = transform;
+
+        
 
         isDrawing = true;
 
@@ -62,6 +73,27 @@ public class LineGUI : MonoBehaviour
         CreateLine(lineWidth, lineColor);
     }
 
+    public void CreateLine(NodePutGUI nodePut){
+        CreateLine();
+
+        
+        lineStart = new Vector2(
+            RectTransformToScreenSpace(
+                nodePut.GetComponent<RectTransform>()).x,
+            RectTransformToScreenSpace(
+                nodePut.GetComponent<RectTransform>()).y);
+
+        
+
+    }
+
+    public void CreateLine(Vector2 position){
+        
+        CreateLine();
+
+        lineStart = position;
+    }
+
     GameObject CreateLineSegment( string name){
         GameObject line = Instantiate(lineBase);
         line.name = name;
@@ -77,6 +109,13 @@ public class LineGUI : MonoBehaviour
         this.lineWidth = lineWidth;
 
     }
+    public void SetLineBase(GameObject lineBase){
+        this.lineBase = lineBase;
+    }
+
+    public void SetLineParent(Transform parent){
+        this.lineParent = parent;
+    }
 
     public void TryUpdateLine(bool test, RectTransform lineEnd){
         if(test){
@@ -86,6 +125,106 @@ public class LineGUI : MonoBehaviour
         }
     }
 
+    public void UpdateLine(NodePutGUI start, NodePutGUI end, int seperation){
+
+
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+        GetComponent<RectTransform>().anchorMin = new Vector2(.5f,.5f);
+        GetComponent<RectTransform>().anchorMax = new Vector2(.5f,.5f);
+
+
+        lineStart =
+        new Vector2(
+            start.GetComponent<RectTransform>().rect.x,
+            start.GetComponent<RectTransform>().rect.y);
+
+        Vector2 lineEnd = 
+        new Vector2(
+            end.GetComponent<RectTransform>().rect.x,
+            end.GetComponent<RectTransform>().rect.y);
+
+            Vector2 pos = start.transform.position;
+            lineEnd = end.transform.position;
+
+
+        
+        float leftSeperationDistance = (seperation * seperationDistance);
+        float rightSeperationDistance = -leftSeperationDistance;
+        float leftWidth = (-lineEnd.x + pos.x) / 2;
+        float leftX = -(leftWidth) * .5f;
+        float centerX = (lineEnd.x - pos.x) / 2;
+
+        if(seperation < 0){
+            leftSeperationDistance *= -1;
+            rightSeperationDistance *= -1;
+            leftWidth *= -1;
+           // leftWidth += leftSeperationDistance * 3;
+            leftWidth *= .5f;
+           // leftX -= leftSeperationDistance * .5f;
+
+            centerX -= leftSeperationDistance;
+        }
+        else {
+            centerX += leftSeperationDistance;
+            leftWidth -= leftSeperationDistance;
+            leftX += leftSeperationDistance * .5f;
+        }
+        UpdateLineSegment(
+            new Rect (
+            leftX,
+            0,
+            leftWidth,
+            lineWidth),
+            lineLeft
+        );
+
+        float centerY = 0;
+        float centerH = 0;
+
+        if(lineEnd.y > pos.y){
+            centerY = -(pos.y - lineEnd.y )  / 2;
+            centerH = -pos.y + lineEnd.y;
+
+        } else {
+            centerY = -(pos.y - lineEnd.y )  / 2;
+            centerH = pos.y - lineEnd.y;
+
+        }
+
+        centerH += lineWidth;
+      // centerY -= lineWidth * .5f;
+
+         UpdateLineSegment(
+            new Rect(
+            centerX,
+            centerY,
+            lineWidth,
+            centerH),
+            lineCenter
+        );
+
+        float rightWidthBase = (lineEnd.x - pos.x);
+
+        UpdateLineSegment(
+            new Rect (
+            (rightWidthBase) * 3 / 4 - rightSeperationDistance * .5f,
+            -pos.y + lineEnd.y,
+            Mathf.Abs(rightWidthBase / 2) - rightSeperationDistance,
+            lineWidth),
+            lineRight
+        );
+
+
+
+    }
+
+    public static Rect RectTransformToScreenSpace(RectTransform transform)
+     {
+         Vector2 size = Vector2.Scale(transform.rect.size, transform.lossyScale);
+         return new Rect((Vector2)transform.position - (size * 0.5f), size);
+     }
+
+
     public void TryUpdateLine(bool test, Vector2 lineEnd){
         if(test){
             UpdateLine(lineEnd);
@@ -93,13 +232,36 @@ public class LineGUI : MonoBehaviour
             TryDestroyLine();
         }
     }
+
+    public void UpdateLineToMouse(){
+        Vector2 start = new Vector2(
+            -UnityEngine.Screen.width / 2 + lineStart.x,
+            -UnityEngine.Screen.height / 2 + lineStart.y
+        );
+        GetComponent<RectTransform>().anchoredPosition = start;
+
+
+        Vector2 lineEnd = 
+            new Vector2(
+                Input.mousePosition.x,
+                Input.mousePosition.y);
+                
+        UpdateLine(lineEnd);
+    }
     public void UpdateLine(RectTransform lineEnd){
-        UpdateLine(new Vector2(lineEnd.rect.x, lineEnd.rect.y ));
+        UpdateLine(
+            new Vector2(
+                lineEnd.rect.x,
+                 lineEnd.rect.y ));
     }
     public void UpdateLine(Vector2 lineEnd){
+
+
         this.lineEnd = lineEnd;
 
-        Vector3 pos = transform.position;
+        Vector3 pos = lineStart;
+
+
 
         UpdateLineSegment(
             new Rect (
@@ -122,6 +284,9 @@ public class LineGUI : MonoBehaviour
             centerH = pos.y - lineEnd.y;
 
         }
+
+        centerH += lineWidth;
+      // centerY -= lineWidth * .5f;
 
          UpdateLineSegment(
             new Rect(
@@ -150,6 +315,7 @@ public class LineGUI : MonoBehaviour
         RectTransform rt = line.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2( rect.x, rect.y);
         rt.sizeDelta = new Vector2( rect.width, rect.height);
+        line.transform.SetParent(lineParent);
 
         line.GetComponent<Image>().color = lineColor;
 
