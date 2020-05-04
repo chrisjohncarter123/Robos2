@@ -28,7 +28,7 @@ public class SelectPartDetailsTool : MonoBehaviour
 
     Tool tool;
 
-    public Screen screen;
+    public ComputerScreen screen;
 
 
 

@@ -56,7 +56,7 @@ public class ComputerGUI : MonoBehaviour
 
     public TurnComputerScreenOnOffGUI onOffGUI;
 
-    public Screen screen;
+    public ComputerScreen screen;
 
 
 

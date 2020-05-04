@@ -26,7 +26,7 @@ public class TurnComputerScreenOnOffGUI : MonoBehaviour
 
     public Text isRunningStatusText;
 
-    public Screen screen;
+    public ComputerScreen screen;
 
 
 

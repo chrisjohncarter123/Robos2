@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_3_0;UNITY_2019_3;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_3_0;UNITY_2019_3;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;UNITY_POST_PROCESSING_STACK_V2;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -55,6 +55,17 @@
   <ItemGroup>
      <Compile Include="Assets\FreeFlyCamera\Demo\Scripts\ToggleGameObjectEnable.cs" />
      <Compile Include="Assets\FreeFlyCamera\Scripts\FreeFlyCamera.cs" />
+     <Compile Include="Assets\Portal\Scripts\Core\CameraUtility.cs" />
+     <Compile Include="Assets\Portal\Scripts\Core\MainCamera.cs" />
+     <Compile Include="Assets\Portal\Scripts\Core\Portal.cs" />
+     <Compile Include="Assets\Portal\Scripts\Core\PortalTraveller.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\Car.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\CloudBehaviorTest.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\CloudCoreTest.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\CloudTest.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\FPSController.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\PortalPhysicsObject.cs" />
+     <Compile Include="Assets\Portal\Scripts\Demo\Spawner.cs" />
      <Compile Include="Assets\QuaternionController\Sample\Scripts\ControlledObject.cs" />
      <Compile Include="Assets\QuaternionController\Sample\Scripts\SampleScript.cs" />
      <Compile Include="Assets\QuaternionController\Scripts\PidController.cs" />
@@ -84,6 +95,7 @@
      <Compile Include="Assets\_MK\MKGlowFree\Scripts\Resources.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Scripts\Settings.cs" />
      <Compile Include="Assets\scripts\Bouncer.cs" />
+     <Compile Include="Assets\scripts\ComputerScreen.cs" />
      <Compile Include="Assets\scripts\ErrorCube.cs" />
      <Compile Include="Assets\scripts\GUI\AllProgramsGUI.cs" />
      <Compile Include="Assets\scripts\GUI\ArgumentGUI.cs" />
@@ -141,7 +153,6 @@
      <Compile Include="Assets\scripts\Player.cs" />
      <Compile Include="Assets\scripts\Program.cs" />
      <Compile Include="Assets\scripts\Roller.cs" />
-     <Compile Include="Assets\scripts\Screen.cs" />
      <Compile Include="Assets\scripts\SelectPartTarget.cs" />
      <Compile Include="Assets\scripts\Shooter.cs" />
      <Compile Include="Assets\scripts\Snake.cs" />
@@ -237,6 +248,7 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Unlit-Normal.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Lit-Transparent.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM30.shader" />
+     <None Include="Assets\Portal\Scripts\Core\Shaders\Portal.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-DiffuseBumped.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Lit-Refraction.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Sprites\Sprites-Diffuse.shader" />
@@ -247,9 +259,13 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumpSpec.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM20.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Common.hlsl" />
+     <None Include="Assets\Portal\Scripts\Core\Shaders\Slice.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Illumin\MK_Illumin-DiffuseBumped.shader" />
+     <None Include="Assets\Portal\Models\Car\License.txt" />
+     <None Include="Assets\Portal\Scripts\Demo\Shaders\CloudTest.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\CompositeSample.hlsl" />
+     <None Include="Assets\Portal\Scripts\Demo\Shaders\SkyDome.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-DiffuseBumpSpec.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Lit-Bumped.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Unlit-Text.shader" />
@@ -303,6 +319,12 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0a7/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

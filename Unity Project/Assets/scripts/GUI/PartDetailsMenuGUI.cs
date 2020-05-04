@@ -16,7 +16,7 @@ public class PartDetailsMenuGUI : MonoBehaviour
 
     public GameObject partDetailGUIParent;
 
-    public Screen screen;
+    public ComputerScreen screen;
 
     
 
