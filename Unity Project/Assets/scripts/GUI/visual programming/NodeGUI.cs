@@ -42,10 +42,7 @@ public class NodeGUI : MonoBehaviour
     Vector2 position;
     VisualProgramPositionGUI positionGUI;
 
-    void Start()
-    {
-        position = new Vector2(0,0);
-    }
+
 
     public void SetCanBeDeleted(bool canBeDeleted){
         this.canBeDeleted = canBeDeleted;
@@ -81,6 +78,21 @@ public class NodeGUI : MonoBehaviour
         this.mouseLine = mouseLine;
     }
 
+    
+    void Start()
+    {
+        position = new Vector2(0,0);
+    }
+
+    public void InitGUI(Node node){
+        this.node = node;
+        node.AddBeforeDelete(OnDeleteNode);
+        SetRows();
+        SetTextColor();
+        SetOptions();
+
+    }
+
     void SetRectTransform(NodeFlow[] outputFlows, NodeInput[] inputs, NodeOutput[] outputs){
         rectTransform = GetComponent<RectTransform>();
 
@@ -103,10 +115,17 @@ public class NodeGUI : MonoBehaviour
     }
 
     public void SetOptions(){
-        
+        optionsMenu.AddOption("Delete", node.DeleteNode);
+
     }
 
-    public void InitGUI(Node node){
+    public void OnDeleteNode(){
+        Destroy(gameObject);
+
+    }
+
+    
+    public void SetRows(){
         inputs = node.inputs;
         outputs = node.outputs;
         inputFlow = node.inputFlow;
@@ -153,10 +172,9 @@ public class NodeGUI : MonoBehaviour
             clone.GetComponent<NodeOutputGUI>().SetNodeOutput(n); 
 
         }
-
-        SetTextColor();
-
     }
+
+
 
 
 

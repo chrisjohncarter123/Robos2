@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
+    public Transform optionsParent;
     public float heightAdd;
     public OptionsItem optionsItemBase;
 
@@ -12,7 +13,7 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rectTransform = GetComponent<rectTransform>();
+        
         
     }
 
@@ -21,8 +22,32 @@ public class OptionsMenu : MonoBehaviour
     {
         
     }
-    public void AddOption(){
+
+    RectTransform GetRectTransform(){
+        if(!rectTransform){
+            rectTransform = GetComponent<RectTransform>();
+
+        }
+        return rectTransform;
+    }
 
 
+    
+    public OptionsItem AddOption(string title, UnityEngine.Events.UnityAction  action){
+
+        OptionsItem newOption = AddOption(title);
+        newOption.AddListener(action);
+        return newOption;
+    }
+    public OptionsItem AddOption(string title){
+
+        Vector2 size = GetRectTransform().sizeDelta;
+        size.y += heightAdd;
+        GetRectTransform().sizeDelta = size;
+
+        OptionsItem newOption = Instantiate(optionsItemBase.gameObject).GetComponent<OptionsItem>();
+        newOption.transform.SetParent(optionsParent);
+        
+        return newOption;
     }
 }

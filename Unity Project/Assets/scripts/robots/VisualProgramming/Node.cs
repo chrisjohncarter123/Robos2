@@ -12,8 +12,10 @@ public class Node : MonoBehaviour
     public NodeOutput[] outputs;
 
     NodeFlow nextFlow;
+    UnityEngine.Events.UnityEvent beforeDelete;
 
     void Start() {
+        
         foreach(NodePut n in GetComponentsInChildren<NodePut>()){
             n.SetNode(this);
 
@@ -21,6 +23,20 @@ public class Node : MonoBehaviour
 
         
     }
+
+    public void AddBeforeDelete(UnityEngine.Events.UnityAction action){
+        if(beforeDelete == null){
+            beforeDelete = new UnityEngine.Events.UnityEvent();
+        }
+        beforeDelete.AddListener(action);
+
+    }
+
+    /*
+    public void AddOnDelete(UnityEngine.Events.UnityEvent event){
+        onDelete.Add(event);
+    }
+    */
 
    
     public string GetNodeTitle(){
@@ -51,6 +67,12 @@ public class Node : MonoBehaviour
 
     public bool HasAnInputFlow(){
         return inputFlow;
+    }
+
+    public void DeleteNode(){
+        beforeDelete.Invoke();
+        Destroy(this.gameObject);
+
     }
 
 

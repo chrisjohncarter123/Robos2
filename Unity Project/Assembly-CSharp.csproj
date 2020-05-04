@@ -121,6 +121,8 @@
      <Compile Include="Assets\scripts\GUI\visual programming\NodePutGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsItem.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenu.cs" />
+     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuClose.cs" />
+     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuOpen.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\PutLineGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\SlotGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\VisualProgramBackgroundTilesGUI.cs" />
