@@ -28,6 +28,9 @@ public class NodeGUI : MonoBehaviour
     public Color flowLineColor;
     public Color variableLineColor;
     public GameObject lineBase;
+    public bool canBeDeleted = true;
+    public OptionsMenu optionsMenu;
+    
 
 
     //"Back-End" objects
@@ -42,6 +45,14 @@ public class NodeGUI : MonoBehaviour
     void Start()
     {
         position = new Vector2(0,0);
+    }
+
+    public void SetCanBeDeleted(bool canBeDeleted){
+        this.canBeDeleted = canBeDeleted;
+    }
+
+    public bool GetCanBeDeleted(){
+        return canBeDeleted;
     }
 
     public void SetNodePosition(Vector2 position){
@@ -91,6 +102,10 @@ public class NodeGUI : MonoBehaviour
 
     }
 
+    public void SetOptions(){
+        
+    }
+
     public void InitGUI(Node node){
         inputs = node.inputs;
         outputs = node.outputs;
@@ -106,9 +121,10 @@ public class NodeGUI : MonoBehaviour
 
         titleText.text = node.GetNodeTitle();
 
-
-            GameObject inputFlowClone = CreatePut(inputFlowBase, inputFlowsParentRectTransform, inputFlow.GetComponent<NodePut>());
-            inputFlowClone.GetComponent<NodeInputFlowGUI>().SetNodeFlow(node.inputFlow);
+        if(node.HasAnInputFlow()){
+            GameObject clone = CreatePut(inputFlowBase, inputFlowsParentRectTransform, inputFlow.GetComponent<NodePut>());
+            clone.GetComponent<NodeInputFlowGUI>().SetNodeFlow(node.inputFlow);
+        }
 
 
         int seperationCounter = 0;

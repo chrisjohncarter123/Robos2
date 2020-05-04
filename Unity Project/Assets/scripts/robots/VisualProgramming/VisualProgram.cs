@@ -8,6 +8,7 @@ public class VisualProgram : MonoBehaviour
 
     public GameObject nodesParent;
     public GameObject nodeTypesParent;
+    public GameObject nodeStartTyoe;
     Node startNode;
     Node currentNode;
 
@@ -29,6 +30,19 @@ public class VisualProgram : MonoBehaviour
         
     }
 
+    public Node GetStartNodeType(){
+        return nodeStartTyoe.GetComponent<Node>();
+
+    }
+    public void SetStartNode(Node startNode){
+        this.startNode = startNode;
+        
+    }
+
+    public void RunProgram(){
+
+    }
+
     void RunNextNode(){
         currentNode = currentNode.RunNode();
 
@@ -45,13 +59,19 @@ public class VisualProgram : MonoBehaviour
     }
 
     public Node CreateNode(int newNodeIndex){
-        GameObject newNodeType = GetAllNodeTypes()[newNodeIndex].gameObject;
-        GameObject newNodeGameObject = Instantiate(newNodeType);
-        newNodeGameObject.transform.SetParent(nodesParent.transform);
-        return newNodeGameObject.GetComponent<Node>();
+        Node newNodeType = GetAllNodeTypes()[newNodeIndex].gameObject.GetComponent<Node>();
+        return CreateNode(newNodeType);
+        
 
 
     }
+     public Node CreateNode(Node newNodeType){
+        GameObject newNodeGameObject = Instantiate(newNodeType.gameObject);
+        newNodeGameObject.transform.SetParent(nodesParent.transform);
+        return newNodeGameObject.GetComponent<Node>();
+
+     }
+
     public void DestroyNode(NodeGUI nodeGUI){
         Destroy(nodeGUI.node.gameObject);
 

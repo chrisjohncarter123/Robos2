@@ -8,11 +8,12 @@ public class NewNodeGUI : MonoBehaviour
 
     public VisualProgram visualProgram;
     public Dropdown dropdown;
+    Node[] allNodeTypes;
     
     void Start() {
         //clear/remove all option item
         dropdown.options.Clear ();
-        Node[] allNodeTypes = visualProgram.GetAllNodeTypes();
+        allNodeTypes = visualProgram.GetAllNodeTypes();
         
         //fill the dropdown menu OptionData with all COM's Name in ports[]
         foreach (Node node in allNodeTypes) 
@@ -24,8 +25,9 @@ public class NewNodeGUI : MonoBehaviour
         dropdown.value = 0;
     }
 
-    public int GetDropdownValue(){
-        return dropdown.value;
+    public Node GetDropdownNode(){
+        return allNodeTypes[dropdown.value];
+
     }
 
 }

@@ -49,5 +49,9 @@ public class Node : MonoBehaviour
 
     }
 
+    public bool HasAnInputFlow(){
+        return inputFlow;
+    }
+
 
 }
