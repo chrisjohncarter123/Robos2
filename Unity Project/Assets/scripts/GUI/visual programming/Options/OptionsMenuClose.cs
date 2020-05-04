@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionsMenuClose : MonoBehaviour, IPointerExitHandler
+public class OptionsMenuClose : MonoBehaviour
 {
     public OptionsMenu menu;
     // Start is called before the first frame update
@@ -14,12 +14,7 @@ public class OptionsMenuClose : MonoBehaviour, IPointerExitHandler
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("Exit");
 
-        menu.gameObject.SetActive(false);
     }
+
 }

@@ -8,8 +8,17 @@ public class OptionsMenuOpen  : MonoBehaviour, IPointerDownHandler, IPointerExit
 
     public OptionsMenu menu;
 
+    bool isOpen = false;
+
     void Update() {
-        //if(Input)
+        if(isOpen){
+            Vector2 mouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+            if(!menu.GetRect().Contains(mouse)){
+                menu.gameObject.SetActive(false);
+
+            }
+        }
     }
  
     public void OnPointerDown(PointerEventData eventData)
@@ -20,6 +29,7 @@ public class OptionsMenuOpen  : MonoBehaviour, IPointerDownHandler, IPointerExit
             Debug.Log("RC");
             menu.gameObject.SetActive(true);
             menu.gameObject.GetComponent<Transform>().position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            isOpen = true;
         }
     }
 
@@ -27,6 +37,6 @@ public class OptionsMenuOpen  : MonoBehaviour, IPointerDownHandler, IPointerExit
     {
         Debug.Log("Exit");
 
-        menu.gameObject.SetActive(false);
+       // menu.gameObject.SetActive(false);
     }
 }

@@ -32,6 +32,11 @@ public class OptionsMenu : MonoBehaviour
     }
 
 
+    public Rect GetRect(){
+        return GetRectTransform().rect;
+    }
+
+
     
     public OptionsItem AddOption(string title, UnityEngine.Events.UnityAction  action){
 

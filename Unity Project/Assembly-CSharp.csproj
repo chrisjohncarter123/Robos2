@@ -55,6 +55,11 @@
   <ItemGroup>
      <Compile Include="Assets\FreeFlyCamera\Demo\Scripts\ToggleGameObjectEnable.cs" />
      <Compile Include="Assets\FreeFlyCamera\Scripts\FreeFlyCamera.cs" />
+     <Compile Include="Assets\QuaternionController\Sample\Scripts\ControlledObject.cs" />
+     <Compile Include="Assets\QuaternionController\Sample\Scripts\SampleScript.cs" />
+     <Compile Include="Assets\QuaternionController\Scripts\PidController.cs" />
+     <Compile Include="Assets\QuaternionController\Scripts\PidQuaternionController.cs" />
+     <Compile Include="Assets\QuaternionController\Scripts\QuaternionExtensions.cs" />
      <Compile Include="Assets\Starfield Skybox\Demo\Script\LookCamera.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Examples\Scripts\Asteroid.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Examples\Scripts\AsteroidSpawner.cs" />
