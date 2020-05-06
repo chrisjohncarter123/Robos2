@@ -115,11 +115,17 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -132,12 +138,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0a7/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -667,6 +667,16 @@
  <Reference Include="Boo.Lang">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0a7/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{10321358-3F09-CF53-F32E-4F3E14FE8C08}</Project>
+      <Name>PathCreator</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{160E5385-5F6D-40DE-DC7C-84118BBD0934}</Project>
+      <Name>PathCreatorEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

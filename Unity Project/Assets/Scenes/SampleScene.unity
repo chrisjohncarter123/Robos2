@@ -4490,12 +4490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c95d2ad288fc40b4967e4dbe30d09d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotPart: {fileID: 0}
-  screen: {fileID: 1164232569}
-  localScreenRotation: {x: 45, y: 180, z: 0}
-  distanceMode: 0
-  menuPositionOffset: {x: 0, y: 2, z: 0}
-  menuDistanceOffset: 0
 --- !u!1 &972467682
 GameObject:
   m_ObjectHideFlags: 0
@@ -5682,7 +5676,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258893982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e4d0c35c597e4e4ba41d25476359b4e, type: 3}
   m_Name: 
@@ -5856,7 +5850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1277628560
 RectTransform:
   m_ObjectHideFlags: 0

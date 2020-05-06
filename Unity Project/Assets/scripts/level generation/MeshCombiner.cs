@@ -1,35 +1,37 @@
-﻿using UnityEngine;
+﻿// This script should be put on an empty GameObject
+// Objects to be combined should be children of the empty GameObject
+using UnityEngine;
 using System.Collections;
-
-// Copy meshes from children into the parent's Mesh.
-// CombineInstance stores the list of meshes.  These are combined
-// and assigned to the attached Mesh.
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public class MeshCombiner : MonoBehaviour
-{
-    public void Combine(){
+ 
+ public class MeshCombiner : MonoBehaviour {
+     
+    void Start () {
+        
+
+    }
+
+    public void Combine() {
+        foreach (Transform child in transform){
+            child.position += transform.position;
+        }
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+    
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
-
-        int i = 0;
-        while (i < meshFilters.Length)
+        var index = 0;
+        for (var i = 0; i < meshFilters.Length; i++)
         {
-            combine[i].mesh = meshFilters[i].sharedMesh;
-            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-            meshFilters[i].gameObject.SetActive(false);
-
-            i++;
+            if (meshFilters[i].sharedMesh == null) continue;
+            combine[index].mesh = meshFilters[i].sharedMesh;
+            combine[index++].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].GetComponent<Renderer>().enabled = false;
         }
-        transform.GetComponent<MeshFilter>().mesh = new Mesh();
-        transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        transform.gameObject.SetActive(true);
+        GetComponent<MeshFilter>().mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh.CombineMeshes (combine);
+        GetComponent<Renderer>().material = meshFilters[0].GetComponent<Renderer>().material;
     }
-
-    
-    void Start(){
-        Combine();
-    }
-        
-}
+ }

@@ -314,6 +314,7 @@ public class CubeMaze : MonoBehaviour
             );
             
             hallCopy.transform.LookAt(cubes[x][y][z].transform.localPosition);
+            hallCopy.transform.SetParent(transform, false);
 
            // walls[newX][newY][newZ] = Wall.Open;
             Generate(newX, newY, newZ);

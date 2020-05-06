@@ -55,6 +55,46 @@
   <ItemGroup>
      <Compile Include="Assets\FreeFlyCamera\Demo\Scripts\ToggleGameObjectEnable.cs" />
      <Compile Include="Assets\FreeFlyCamera\Scripts\FreeFlyCamera.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\GamestrapEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\GradientEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\MirrorEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\PerspectiveEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\RadialGradientEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\ShadowEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Effects\SkewEffect.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Global\Scripts\ESceneNames.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Global\Scripts\GSAppExampleControl.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Global\Scripts\SceneTransitionsButton.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Screens\Gameplay\GameplayUI.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Screens\Levels\LevelsControl.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Examples\Complete Project\Screens\Main Menu\MainMenuControl.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Helper Scripts\ButtonShowHide.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Helper Scripts\ToggleButtonIcon.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Custom Searchable Component\ISearchableComponent.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Custom Searchable Component\SearchableComponent.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\ComponentModifier.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\Font\ModifierUIText.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\IModifier.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\Modifier.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUIGradient.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUIMirror.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUIPerspective.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUIRadialGradient.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUIShadow.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Modifier\UIEffects\ModifierUISkew.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\ColorGroup.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\ColorGroupDescendant.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\EUIType.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\GamestrapTheme.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\NamedColor.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\Theme\SerializableGuid.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Scripts\UIVars.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
      <Compile Include="Assets\Portal\Scripts\Core\CameraUtility.cs" />
      <Compile Include="Assets\Portal\Scripts\Core\MainCamera.cs" />
      <Compile Include="Assets\Portal\Scripts\Core\Portal.cs" />
@@ -123,7 +163,6 @@
      <Compile Include="Assets\scripts\GUI\VariableGUI.cs" />
      <Compile Include="Assets\scripts\GUI\VariablesParentGUI.cs" />
      <Compile Include="Assets\scripts\GUI\WiringPartGUI.cs" />
-     <Compile Include="Assets\scripts\GUI\visual programming\CreateNewNodeDropdownGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\DragAndDrop.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\LineGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\MouseLineGUI.cs" />
@@ -138,8 +177,8 @@
      <Compile Include="Assets\scripts\GUI\visual programming\NodePutGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsItem.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenu.cs" />
-     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuClose.cs" />
-     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuOpen.cs" />
+     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuBodyTrigger.cs" />
+     <Compile Include="Assets\scripts\GUI\visual programming\Options\OptionsMenuTitleTrigger.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\PutLineGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\SlotGUI.cs" />
      <Compile Include="Assets\scripts\GUI\visual programming\VisualProgramBackgroundTilesGUI.cs" />
@@ -219,6 +258,8 @@
      <Compile Include="Assets\scripts\tools\SelectPartDetailsTool.cs" />
      <Compile Include="Assets\scripts\tools\Tool.cs" />
      <Compile Include="Assets\scripts\tools\ToolTitle.cs" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Monospace\README.txt" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Lato\SIL Open Font License.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-DefaultFont.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Unlit-Detail.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Unlit-TextDetail.shader" />
@@ -226,21 +267,28 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Debug.hlsl" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Illumin\MK_Illumin-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Sprites\Sprites-Diffuse.shader" />
+     <None Include="Assets\Gamestrap\UI\Graphics\Flags\_readme.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\UI\UI-Default.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumped.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Particle\MK_Particle Add.shader" />
+     <None Include="Assets\Gamestrap\UI\Fonts\OpenSans\LICENSE.txt" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Bebas\Flat-it License.txt" />
+     <None Include="Assets\Gamestrap\UI\Fonts\ubuntu\UBUNTU FONT LICENCE.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Sprites\Sprites-Default.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Lit-RefractionDetail.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-DiffuseBumped.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Presample.hlsl" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Composite.hlsl" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-Glossy.shader" />
+     <None Include="Assets\Gamestrap\UI\Gizmos\_readme.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-DiffuseBumpSpec.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\MKGlowStandard.shader" />
      <None Include="Assets\Materials\Fade.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\MKGlowStandardSpecular.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-DefaultETC1.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM40.shader" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Bigfish\FontInfo.txt" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Basis33\README.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Sprites\Sprites-Default.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Illumin-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Particle\MK_Particle AddMultiply.shader" />
@@ -256,7 +304,9 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Unlit-Transparent.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Copy.hlsl" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Basis33\LICENSE.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumpSpec.shader" />
+     <None Include="Assets\Gamestrap\UI\Fonts\Polaris\FontInfo.txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM20.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Common.hlsl" />
      <None Include="Assets\Portal\Scripts\Core\Shaders\Slice.shader" />
@@ -279,6 +329,7 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Particle\MK_Particle Alpha Blend.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-Glossy.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\UI.hlsl" />
+     <None Include="Assets\Gamestrap\UI\Fonts\PixelFJ8pt1\peace,...txt" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Mobile-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\UI\UI-Default.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSM25.shader" />
@@ -302,11 +353,17 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -319,12 +376,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0a7/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -859,6 +910,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{C65DF7E6-5082-3454-2A7F-EDDBED1731B5}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{10321358-3F09-CF53-F32E-4F3E14FE8C08}</Project>
+      <Name>PathCreator</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{160E5385-5F6D-40DE-DC7C-84118BBD0934}</Project>
+      <Name>PathCreatorEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

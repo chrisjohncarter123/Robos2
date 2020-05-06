@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class NodeDraggerGUI : EventTrigger {
 
-
-
     private bool dragging;
     Vector2 mouseStart;
     Vector2 posStart;
@@ -36,13 +34,28 @@ public class NodeDraggerGUI : EventTrigger {
     }
 
     public override void OnPointerDown(PointerEventData eventData) {
-        dragging = true;
-        mouseStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        posStart = nodeGUI.GetNodePosition();
+         if (eventData.button == PointerEventData.InputButton.Left) {
+            dragging = true;
+            mouseStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            posStart = nodeGUI.GetNodePosition();
+         }
+     
+        
     }
 
     public override void OnPointerUp(PointerEventData eventData) {
-        dragging = false;
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            if(dragging){
+                dragging = false;
+            }
+
+        }
+
+        
     }
+
+
+
+
 }
 

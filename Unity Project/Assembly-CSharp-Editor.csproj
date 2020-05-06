@@ -53,6 +53,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\ObjExporter.cs.cs" />
+     <Compile Include="Assets\Gamestrap\Editor\EditorHelper.cs" />
+     <Compile Include="Assets\Gamestrap\Editor\GraphicsLoader.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\EditorStyle\StylesUI.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\GamestrapUIHelper.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\Graphics\ColorGraphics.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\Popups\ColorGroupPopupWindow.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\Popups\ColorHelperPopupWindow.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\ThemeInspector.cs" />
+     <Compile Include="Assets\Gamestrap\UI\Editor\ThemeWindow.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\Editor\PathSceneToolEditor.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Editor\EditorHelper.EditorUIContent.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Editor\EditorHelper.cs" />
      <Compile Include="Assets\_MK\MKGlowFree\Editor\MKGlowEditor.cs" />
@@ -82,11 +93,17 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -99,12 +116,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>/Users/ChrisJohnCarter/Development/Unity/Robos2/Unity Project/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0a7/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -655,6 +666,14 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{BDBCE7D3-139D-3EDB-816D-FB1D73476D25}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{10321358-3F09-CF53-F32E-4F3E14FE8C08}</Project>
+      <Name>PathCreator</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{160E5385-5F6D-40DE-DC7C-84118BBD0934}</Project>
+      <Name>PathCreatorEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
