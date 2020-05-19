@@ -6617,12 +6617,6 @@ MonoBehaviour:
   previewObject: {fileID: 1803549687}
   rotateSpeed: 0.1
   groundYOffset: 4.1
---- !u!1 &1352987871 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1228291715418906476, guid: 5e171f5b7890a45198ba52a226fae381,
-    type: 3}
-  m_PrefabInstance: {fileID: 7017170461044336549}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358480162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9665,6 +9659,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f114e6b62ad5134b9ba4e0a01ddc050, type: 3}
+--- !u!1 &2059065251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7017170461330200317, guid: 5e171f5b7890a45198ba52a226fae381,
+    type: 3}
+  m_PrefabInstance: {fileID: 7017170461044336549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075706463
 GameObject:
   m_ObjectHideFlags: 0
@@ -10031,16 +10031,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7017170462001545716, guid: 5e171f5b7890a45198ba52a226fae381,
-        type: 3}
-      propertyPath: nodeStartTyoe
-      value: 
-      objectReference: {fileID: 1352987871}
     - target: {fileID: 7017170462001545717, guid: 5e171f5b7890a45198ba52a226fae381,
         type: 3}
       propertyPath: m_Name
       value: VisualProgram
       objectReference: {fileID: 0}
+    - target: {fileID: 7017170462001545716, guid: 5e171f5b7890a45198ba52a226fae381,
+        type: 3}
+      propertyPath: nodeStartTyoe
+      value: 
+      objectReference: {fileID: 2059065251}
     - target: {fileID: 7017170462001545719, guid: 5e171f5b7890a45198ba52a226fae381,
         type: 3}
       propertyPath: m_LocalPosition.x
